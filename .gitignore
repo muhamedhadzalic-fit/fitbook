@@ -1,0 +1,51 @@
+.claude
+
+# ---------------------------------------------------------------
+# .NET backend (FitBook.Api / Worker / Services / Repository / Domain)
+# NOTE: fitbook_desktop and fitbook_mobile are intentionally not
+# covered here yet - Flutter rules to be added later.
+# ---------------------------------------------------------------
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.csproj.user
+*.swp
+
+# Local config & secrets
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.local.json
+*.pfx
+secrets.json
+
+# Test & coverage
+[Tt]est[Rr]esult*/
+coverage*.json
+coverage*.xml
+coverage*.info
+*.trx
+*.coverage
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+!packages/build/
+
+# Misc
+*.dll.config
+*.pdb
+.DS_Store
