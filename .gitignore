@@ -1,5 +1,5 @@
 .claude
-
+CLAUDE.md
 # ---------------------------------------------------------------
 # .NET backend (FitBook.Api / Worker / Services / Repository / Domain)
 # NOTE: fitbook_desktop and fitbook_mobile are intentionally not
