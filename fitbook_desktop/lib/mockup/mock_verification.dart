@@ -7,6 +7,15 @@ import '../models/verification.dart';
 /// from mobile into `Pending`, and an admin approves or rejects them here.
 abstract final class MockVerification {
   static const queueHeading = 'Pending verification';
+
+  /// Subtitle under the queue heading. Takes the queue's length, so the count
+  /// stays the list's own rather than a second number to keep in step.
+  static String queueSubtitle(int count) => '$count trainers awaiting review';
+
+  /// Byline under an uploaded document — its size and when it arrived.
+  static String documentByline(String sizeLabel, String uploadedLabel) =>
+      '$sizeLabel · uploaded $uploadedLabel';
+
   static const checklistHeading = 'Verification checklist';
   static const documentsHeading = 'Uploaded documents';
   static const bioHeading = 'Bio submitted';
