@@ -66,3 +66,8 @@ packages/
 **/android/.gradle/
 **/android/local.properties
 **/windows/flutter/ephemeral/
+
+# fitbook_mobile targets Android only, the way fitbook_desktop targets Windows
+# only. `flutter create` regenerates ios/ on a Mac; it is not a build target,
+# so it stays out of the repo.
+fitbook_mobile/ios/
