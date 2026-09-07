@@ -126,6 +126,13 @@ abstract final class MockReservations {
   ];
 
   static const pageSizeNote = 'Showing 1–8 of 248 reservations';
+
+  /// Pager position. The real list is paginated server-side with an enforced
+  /// max page size, so these arrive with the page rather than being computed
+  /// from a full result set the client never receives.
+  static const pageCount = 3;
+  static const currentPage = 1;
+
   static const emptyMessage = 'No reservations match this search';
   static const viewTooltip = 'View reservation';
   static const moreTooltip = 'More';
