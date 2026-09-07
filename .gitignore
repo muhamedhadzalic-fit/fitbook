@@ -2,8 +2,6 @@
 CLAUDE.md
 # ---------------------------------------------------------------
 # .NET backend (FitBook.Api / Worker / Services / Repository / Domain)
-# NOTE: fitbook_desktop and fitbook_mobile are intentionally not
-# covered here yet - Flutter rules to be added later.
 # ---------------------------------------------------------------
 
 # Build output
@@ -49,3 +47,22 @@ packages/
 *.dll.config
 *.pdb
 .DS_Store
+
+# ---------------------------------------------------------------
+# Flutter apps (fitbook_desktop / fitbook_mobile)
+#
+# Each app carries its own .gitignore for the standard Flutter
+# artifacts (build/, .dart_tool/, symbols). Only the extras go here.
+#
+# The bundled Inter font files under */assets/fonts/ ARE committed
+# on purpose - both apps must render correctly offline during the
+# review, so the typeface cannot be a runtime download.
+# ---------------------------------------------------------------
+
+# Golden-test failure artifacts
+**/test/failures/
+
+# Generated platform scaffolding not covered per-app
+**/android/.gradle/
+**/android/local.properties
+**/windows/flutter/ephemeral/
