@@ -9,6 +9,7 @@ class MemberRow {
     required this.joinedLabel,
     required this.sessionCount,
     required this.plan,
+    required this.planTintKey,
     required this.status,
     required this.identityHue,
   });
@@ -19,6 +20,11 @@ class MemberRow {
   final String joinedLabel;
   final int sessionCount;
   final String plan;
+
+  /// Semantic tint name for the plan chip — the plan itself is content, so the
+  /// screen must not colour it by matching on the plan's name.
+  final String? planTintKey;
+
   final MemberStatus status;
   final double identityHue;
 }
