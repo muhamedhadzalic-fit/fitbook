@@ -113,6 +113,8 @@ class MiniKpiCard extends StatelessWidget {
     'amber' => FBColors.amber,
     'red' => FBColors.red,
     'blue' => FBColors.blue,
+    'navy' => FBColors.navy,
+    'grey' => FBColors.textMid,
     _ => FBColors.text,
   };
 
