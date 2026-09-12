@@ -22,6 +22,12 @@ CLAUDE.md
 *.swp
 
 # Local config & secrets
+#
+# Real configuration lives in .env.dev / .env.prod and never enters git.
+# .env.example is the committed template and carries placeholders only.
+.env
+.env.*
+!.env.example
 appsettings.Development.json
 appsettings.Local.json
 appsettings.*.local.json
@@ -71,3 +77,5 @@ packages/
 # only. `flutter create` regenerates ios/ on a Mac; it is not a build target,
 # so it stays out of the repo.
 fitbook_mobile/ios/
+
+.env.dev
