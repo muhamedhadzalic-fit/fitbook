@@ -48,5 +48,9 @@ public class User
     /// <summary>Set when this user is a trainer.</summary>
     public TrainerProfile? TrainerProfile { get; set; }
 
+    public ICollection<Notification> Notifications { get; set; } = [];
+
+    public ICollection<SearchHistory> SearchHistory { get; set; } = [];
+
     public string FullName => $"{FirstName} {LastName}";
 }

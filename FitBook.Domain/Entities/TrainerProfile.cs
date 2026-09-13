@@ -43,6 +43,8 @@ public class TrainerProfile
 
     public ICollection<TrainerSpeciality> TrainerSpecialities { get; set; } = [];
 
+    public ICollection<TrainerDocument> Documents { get; set; } = [];
+
     public ICollection<Service> Services { get; set; } = [];
 
     public ICollection<Availability> Availabilities { get; set; } = [];
