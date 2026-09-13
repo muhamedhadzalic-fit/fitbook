@@ -17,4 +17,6 @@ public class City
     public Country Country { get; set; } = null!;
 
     public ICollection<User> Users { get; set; } = [];
+
+    public ICollection<Location> Locations { get; set; } = [];
 }

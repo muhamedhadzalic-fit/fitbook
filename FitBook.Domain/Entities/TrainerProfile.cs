@@ -40,4 +40,10 @@ public class TrainerProfile
     public string? District { get; set; }
 
     public bool IsAcceptingClients { get; set; } = true;
+
+    public ICollection<TrainerSpeciality> TrainerSpecialities { get; set; } = [];
+
+    public ICollection<Service> Services { get; set; } = [];
+
+    public ICollection<Availability> Availabilities { get; set; } = [];
 }
