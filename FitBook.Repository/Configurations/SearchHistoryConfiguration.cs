@@ -32,11 +32,17 @@ public class SearchHistoryConfiguration : IEntityTypeConfiguration<SearchHistory
             .HasForeignKey(s => s.CategoryId)
             .OnDelete(DeleteBehavior.SetNull);
 
+        // NoAction rather than SetNull, unlike the other signals above. A
+        // trainer profile cascades from its user, so SetNull here would give
+        // SQL Server two cascading routes from User to this table — directly,
+        // and through TrainerProfile — which it rejects with error 1785. The
+        // effect is the documented one anyway: a referenced row blocks the
+        // delete, and trainer profiles are transitioned, never hard-deleted.
         builder
             .HasOne(s => s.ViewedTrainerProfile)
             .WithMany()
             .HasForeignKey(s => s.ViewedTrainerProfileId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder
             .HasOne(s => s.City)

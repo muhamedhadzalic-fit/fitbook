@@ -14,7 +14,7 @@ their own bookings.
 |---|---|
 | `fitbook_mobile` — Android, client + trainer | **All 14 screens built**, running on mock data |
 | `fitbook_desktop` — Windows, admin | **All 7 screens built**, running on mock data |
-| `FitBook.Domain` · `FitBook.Repository` | Entities, enums and `DbContext` implemented; no migrations yet |
+| `FitBook.Domain` · `FitBook.Repository` | Entities, enums, `DbContext` and the initial migration, applied to `230209_dev`; no seed data yet |
 | `FitBook.Api` · `FitBook.Services` | Plain-HTTP controllers host and config loading; no endpoints or business logic yet |
 | `FitBook.Worker` | Project scaffold only |
 
@@ -87,7 +87,16 @@ dotnet run --project FitBook.Api      # http://localhost:5274, plain HTTP
 dotnet run --project FitBook.Worker   # separate microservice process
 ```
 
-The API is a controllers host with the data layer wired up, but **no endpoints yet**, so nothing in the Flutter apps calls it. There are no migrations yet either: the databases `230209` and `230209_dev` exist but are empty.
+The API is a controllers host with the data layer wired up, but **no endpoints yet**, so nothing in the Flutter apps calls it.
+
+Create the schema before first run:
+
+```bash
+ASPNETCORE_ENVIRONMENT=Development dotnet ef database update \
+  --project FitBook.Repository --startup-project FitBook.Api
+```
+
+That builds all 23 tables in `230209_dev`. The tables are empty — seed data comes with authentication, since seeded passwords have to be hashed the same way login hashes them.
 
 ## Tests and checks
 
