@@ -14,7 +14,9 @@ their own bookings.
 |---|---|
 | `fitbook_mobile` — Android, client + trainer | **All 14 screens built**, running on mock data |
 | `fitbook_desktop` — Windows, admin | **All 7 screens built**, running on mock data |
-| `FitBook.Api` · `FitBook.Worker` · `Services` · `Repository` · `Domain` | Project scaffold only |
+| `FitBook.Domain` · `FitBook.Repository` | Entities, enums and `DbContext` implemented; no migrations yet |
+| `FitBook.Api` · `FitBook.Services` | Plain-HTTP controllers host and config loading; no endpoints or business logic yet |
+| `FitBook.Worker` | Project scaffold only |
 
 Both Flutter apps are the finished presentation layer with no backend attached: no HTTP client, no
 auth, no Stripe, no PDF generation. Every literal they display lives under `lib/mockup/` in each
@@ -64,13 +66,28 @@ not yet built, and say so when opened.
 
 ### Backend
 
+Prerequisites: the **.NET 10 SDK** and a reachable **SQL Server**. Locally that is a single container:
+
+```bash
+docker run -d --name fitbook-sqlserver --restart unless-stopped \
+  -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD='<sa-password>' -e MSSQL_PID=Developer \
+  -p 1433:1433 -v fitbook-sqldata:/var/opt/mssql \
+  mcr.microsoft.com/mssql/server:2022-CU26-ubuntu-22.04
+```
+
+Configuration is read from `.env.dev`, which is gitignored — copy the committed template and fill in the connection string:
+
+```bash
+cp .env.example .env.dev
+```
+
 ```bash
 dotnet build
-dotnet run --project FitBook.Api      # http://localhost:5274
+dotnet run --project FitBook.Api      # http://localhost:5274, plain HTTP
 dotnet run --project FitBook.Worker   # separate microservice process
 ```
 
-The API is still the project template. Nothing in the Flutter apps calls it yet.
+The API is a controllers host with the data layer wired up, but **no endpoints yet**, so nothing in the Flutter apps calls it. There are no migrations yet either: the databases `230209` and `230209_dev` exist but are empty.
 
 ## Tests and checks
 
