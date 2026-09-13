@@ -18,4 +18,10 @@ public class ClientProfile
     public string? Preferences { get; set; }
 
     public DateTime? DateOfBirth { get; set; }
+
+    public ICollection<Booking> Bookings { get; set; } = [];
+
+    public ICollection<Membership> Memberships { get; set; } = [];
+
+    public ICollection<Review> Reviews { get; set; } = [];
 }
