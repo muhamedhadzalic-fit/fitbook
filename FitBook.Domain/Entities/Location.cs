@@ -19,4 +19,6 @@ public class Location
     public int CityId { get; set; }
 
     public City City { get; set; } = null!;
+
+    public ICollection<Booking> Bookings { get; set; } = [];
 }

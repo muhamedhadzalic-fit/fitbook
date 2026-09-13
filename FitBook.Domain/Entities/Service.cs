@@ -30,4 +30,6 @@ public class Service
     public bool IsActive { get; set; } = true;
 
     public DateTime CreatedAt { get; set; }
+
+    public ICollection<Booking> Bookings { get; set; } = [];
 }
