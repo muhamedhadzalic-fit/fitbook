@@ -96,7 +96,21 @@ ASPNETCORE_ENVIRONMENT=Development dotnet ef database update \
   --project FitBook.Repository --startup-project FitBook.Api
 ```
 
-That builds all 23 tables in `230209_dev`. The tables are empty — seed data comes with authentication, since seeded passwords have to be hashed the same way login hashes them.
+That builds all 23 tables in `230209_dev` and seeds them: 13 accounts, 7 trainer profiles covering every verification state, 10 services, 10 bookings spanning the whole state machine, payments including a refund, reviews, memberships, notifications, recommender signals and the audit trail.
+
+### Credentials
+
+Every seeded account uses the password **`test`**.
+
+| Context | Username | Password |
+|---|---|---|
+| Desktop — Admin | `admin@fitbook.ba` | `test` |
+| Mobile — Client | `amila.dedovic@fitbook.ba` | `test` |
+| Mobile — Trainer | `ana.kovac@fitbook.ba` | `test` |
+
+Other seeded logins follow the same pattern: trainers `marko.petric@`, `iva.milic@` and `damir.juric@fitbook.ba` are verified; `lejla.hodzic@` and `goran.lukic@fitbook.ba` are awaiting verification, so they can be approved from the desktop app; `mirza.aldic@fitbook.ba` was rejected. Clients `nedim.hadzic@`, `selma.begic@`, `haris.demirovic@` and `dzana.mujkic@fitbook.ba` have bookings in differing states.
+
+Passwords are stored as PBKDF2-HMAC-SHA256 (100,000 iterations, per-account salt). Seeded hashes are produced with exactly the parameters the runtime hasher uses, so a seeded account logs in the same way a newly registered one does.
 
 ## Tests and checks
 

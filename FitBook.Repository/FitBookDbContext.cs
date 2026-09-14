@@ -47,5 +47,9 @@ public class FitBookDbContext(DbContextOptions<FitBookDbContext> options) : DbCo
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(FitBookDbContext).Assembly);
+
+        // Seed data is kept out of the configuration classes: those describe a
+        // table's mapping, this describes its contents. See SeedData.
+        Seed.SeedData.Apply(modelBuilder);
     }
 }
