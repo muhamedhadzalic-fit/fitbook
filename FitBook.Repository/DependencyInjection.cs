@@ -1,3 +1,4 @@
+using FitBook.Repository.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +30,9 @@ public static class DependencyInjection
         // AddDbContext registers the context as Scoped, which is what any
         // service touching it must be — never Transient.
         services.AddDbContext<FitBookDbContext>(options => options.UseSqlServer(connectionString));
+
+        // Repositories share the context's lifetime, so they are Scoped too.
+        services.AddScoped<ICityRepository, CityRepository>();
 
         return services;
     }
