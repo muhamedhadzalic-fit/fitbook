@@ -1,4 +1,5 @@
 using FitBook.Repository;
+using FitBook.Services.Reference;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,6 +20,8 @@ public static class DependencyInjection
 
         // Business services are registered here as they land, always Scoped
         // while they touch the DbContext.
+        services.AddScoped<ICityService, CityService>();
+
         return services;
     }
 }
